@@ -6,10 +6,10 @@
 
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function Home() {
+export default function Profile() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Page</Text>
+      <Text style={styles.title}>Profile Page</Text>
       <Text>Welcome to AggieTimeBank!</Text>
     </View>
   );
