@@ -11,11 +11,15 @@ import mysql.connector
 import random
 from datetime import datetime
 
+import time
+
+time.sleep(10)
+
 # CONNECT TO MYSQL
 conn = mysql.connector.connect(
-    host="localhost",
+    host="db",
     user="root",
-    password="password",
+    password="rootpass",
     database="timebank"
 )
 
