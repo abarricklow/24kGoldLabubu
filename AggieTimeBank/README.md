@@ -53,6 +53,6 @@ Join our community of developers creating universal apps.
 
 
 
+REQUIREMENTS: 
 
-backend 
 pip install mysql-connector-python
