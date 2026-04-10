@@ -15,7 +15,7 @@ export default function TabLayout() {
         // FIXME username = {user.name}
         // FIXME timeBalance = {user.timeBalance}
         <>
-          <Header appName="Aggie Time Bank" username="Labubu" timeBalance={4} />
+          <Header appName="Aggie Time Bank" username="Shokhina" timeBalance={4} />
     
           <Tabs
             screenOptions={{

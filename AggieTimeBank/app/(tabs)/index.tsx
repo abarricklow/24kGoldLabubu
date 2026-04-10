@@ -4,96 +4,58 @@
 // Total time credits shown at top right
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
+import { usePosts } from '../context/PostContext';
+
 
 export default function Home() {
   const router = useRouter();
+  const {posts} = usePosts();
 
   const postings = [
-    { id: '1', title: 'Dog Walking' },
-    { id: '2', title: 'Math Tutoring' },
-    { id: '3', title: 'Grocery Pickup' },
-    { id: '4', title: 'Yard Work' },
+    { id: '1', title: 'Dog Walking', description: 'I am looking for someone to walk my dog for 30 minutes every day after school.', credits: 1,},
+    { id: '2', title: 'Math Tutoring', description: 'My son is struggling with trig, if someone could help him out that would be great!', credits: 2, },
+    { id: '3', title: 'Grocery Pickup', description: 'I have a Walmart order on the 15th that needs to be picked up! I can schedule for the time you can do.', credits: 1, },
+    { id: '4', title: 'Yard Work', description: 'Pulling weeds, watering plants, somes simple stuff.', credits: 4, },
   ];
+
+  const allPosts = [...postings, ...posts];
   
   return (
     <View style={styles.container}>
       <Text style={styles.mainTitle}>Home Page</Text>
       <Text style={styles.sectionTitle}>Postings</Text>
 
-      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator = {false}>
-        {/* dummie postings 
-        change to link with database later*/} 
+      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
 
-          {/*card 1*/}
-        <View style={styles.card}>
-          <Text style={styles.cardText}>Dog Walking</Text>
+  {allPosts.length === 0 ? (
+    <Text style={{ color: 'white', textAlign: 'center' }}>
+      No posts yet — create one in Profile!
+    </Text>
+  ) : (
+    allPosts.map((item) => (
+      <View key={item.id} style={styles.card}>
+        <Text style={styles.cardText}>{item.title}</Text>
 
-          <Text style = {styles.description}>
-            I am looking for someone to walk my dog for 30 minutes every day after school. I am a student and have a busy schedule, so I need someone reliable to help me out. I can offer 1 time credit per walk. Daily dog walking is essential for a canine's physical health, mental stimulation, and behavioral well-being, providing necessary exercise to prevent obesity, joint issues, and boredom-induced destructive behavior. Regular walks allow dogs to explore, socialize, and bond with their owners, acting as a crucial outlet for energy and environmental stimulation.
-          </Text>
+        <Text style={styles.description}>
+          {item.description}
+        </Text>
 
-          <View style = {styles.bottomRow}>
-            <Text style = {styles.time}>Time: 1</Text>
+        <View style={styles.bottomRow}>
+          <Text style={styles.time}>Time: {item.credits}</Text>
 
-            <TouchableOpacity style = {styles.button} onPress={() => router.push('../posting/1')}>
-              <Text style = {styles.buttonText}>Interested</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push(`../posting/${item.id}`)}
+          >
+            <Text style={styles.buttonText}>Interested</Text>
+          </TouchableOpacity>
         </View>
+      </View>
+    ))
+  )}
 
-        {/*card 2*/}
-        <View style={styles.card}>
-          <Text style={styles.cardText}>Sewing</Text>
+</ScrollView>
 
-          <Text style = {styles.description}>
-            I am looking for someone to help me with sewing projects. I am a student and have a busy schedule, so I need someone reliable to help me out. I can offer 5 time credit per session.
-          </Text>
-
-          <View style = {styles.bottomRow}>
-            <Text style = {styles.time}>Time: 5</Text>
-
-            <TouchableOpacity style = {styles.button} onPress={() => router.push('../posting/1')}>
-              <Text style = {styles.buttonText}>Interested</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/*card 3*/}
-        <View style={styles.card}>
-          <Text style={styles.cardText}>Tutoring</Text>
-
-          <Text style = {styles.description}>
-            I am looking for someone to help me with tutoring sessions. I am studing for a big exam and need help with understanding the material. I can offer 3 time credit per session. 
-          </Text>
-
-          <View style = {styles.bottomRow}>
-            <Text style = {styles.time}>Time: 3</Text>
-
-            <TouchableOpacity style = {styles.button} onPress={() => router.push('../posting/1')}>
-              <Text style = {styles.buttonText}>Interested</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/*card 4*/}
-        <View style={styles.card}>
-          <Text style={styles.cardText}>Dog Droppings Cleanup</Text>
-
-          <Text style = {styles.description}>
-            Help me clean up dog poop. 
-          </Text>
-
-          <View style = {styles.bottomRow}>
-            <Text style = {styles.time}>Time: 1</Text>
-
-            <TouchableOpacity style = {styles.button} onPress={() => router.push('../posting/1')}>
-              <Text style = {styles.buttonText}>Interested</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        
-
-      </ScrollView>
     </View>
   );
 }
