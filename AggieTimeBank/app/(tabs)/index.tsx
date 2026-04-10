@@ -1,26 +1,14 @@
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+// Home Page
+// Shows title at top and name of user at the top right
+// View everyones job postings
+// Total time credits shown at top right
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function Index() {
-  const router = useRouter();
-
+export default function Home() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>AggieTimeBank</Text>
-
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Go to Home"
-          onPress={() => router.push('/screens/home')}
-        />
-      </View>
-
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Go to Profile"
-          onPress={() => router.push('/screens/profile')}
-        />
-      </View>
+      <Text style={styles.title}>Home Page</Text>
+      <Text>Welcome to AggieTimeBank!</Text>
     </View>
   );
 }
@@ -32,13 +20,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 30,
-    color: '#e2d54a',
-  },
-  buttonContainer: {
-    marginVertical: 10,
-    width: 200,
+    marginBottom: 10,
   },
 });
