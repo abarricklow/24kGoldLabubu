@@ -45,7 +45,7 @@ export default function PostingDetails() {
       {/* Back button */}
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => router.push('/screens/home')}
+        onPress={() => router.push('../(tabs)/index')}
       >
         <Ionicons name="arrow-back" size={24} />
         <Text style={styles.backText}>Back</Text>
