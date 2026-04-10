@@ -6,7 +6,12 @@ services:
     container_name: timebank_mysql
     restart: always
     environment:
+<<<<<<< HEAD
       MYSQL_ROOT_PASSWORD: Feastbuffet4!
+=======
+      # TODO: change to yout password
+      MYSQL_ROOT_PASSWORD: password
+>>>>>>> 8f517f90e9a3704445c85302996c8121f94b48c9
       MYSQL_DATABASE: timebank
     ports:
       - "3306:3306"
