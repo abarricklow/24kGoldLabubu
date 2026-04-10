@@ -6,7 +6,8 @@ services:
     container_name: timebank_mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: YWiC-0011
+      # TODO: change to yout password
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: timebank
     ports:
       - "3307:3306"
