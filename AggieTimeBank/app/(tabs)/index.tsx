@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 60,
     paddingHorizontal: 50,
+    backgroundColor: '#000000',
   },
   mainTitle: {
     fontSize: 36,
